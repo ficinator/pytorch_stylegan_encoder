@@ -1,3 +1,3 @@
 [submodule "InterFaceGAN"]
 	path = InterFaceGAN
-	url = git://github.com/ShenYujun/InterFaceGAN.git
+	url = https://github.com/genforce/interfacegan.git
