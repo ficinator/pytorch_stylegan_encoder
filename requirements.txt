@@ -1,0 +1,7 @@
+opencv-python
+tqdm
+torch
+torchvision
+jupyter
+kaggle
+gradio

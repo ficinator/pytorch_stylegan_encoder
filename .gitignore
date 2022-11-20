@@ -2,6 +2,7 @@ __pycache__
 .pt
 .npy
 .ipynb_checkpoints
+data
 image_to_latent.pt
 dlatents.npy
 notes.txt
