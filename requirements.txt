@@ -1,4 +1,5 @@
 opencv-python
+scikit-learn
 tqdm
 torch
 torchvision
