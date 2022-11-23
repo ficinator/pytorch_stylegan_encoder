@@ -42,7 +42,8 @@ def optimize_latents():
         generated_image_hook = GeneratedImageHook(latent_optimizer.post_synthesis_processing, args.save_frequency)
 
     reference_image = load_images([args.image_path])
-    reference_image = torch.from_numpy(reference_image).cuda()
+    # reference_image = torch.from_numpy(reference_image).cuda()
+    reference_image = torch.from_numpy(reference_image)
     reference_image = latent_optimizer.vgg_processing(reference_image)
     reference_features = latent_optimizer.vgg16(reference_image).detach()
     reference_image = reference_image.detach()
@@ -55,7 +56,8 @@ def optimize_latents():
         latents_to_be_optimized = image_to_latent(reference_image)
         latents_to_be_optimized = latents_to_be_optimized.detach().cuda().requires_grad_(True)
     else:
-        latents_to_be_optimized = torch.zeros((1,18,512)).cuda().requires_grad_(True)
+        # latents_to_be_optimized = torch.zeros((1,18,512)).cuda().requires_grad_(True)
+        latents_to_be_optimized = torch.zeros((1,18,512)).requires_grad_(True)
 
     criterion = LatentLoss()
     optimizer = torch.optim.SGD([latents_to_be_optimized], lr=args.learning_rate)

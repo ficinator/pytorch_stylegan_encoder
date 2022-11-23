@@ -16,12 +16,12 @@ class PostSynthesisProcessing(torch.nn.Module):
         return synthesized_image
 
 class VGGProcessing(torch.nn.Module):
-    def __init__(self):
+    def __init__(self, device='cuda'):
         super().__init__()
 
         self.image_size = 256
-        self.mean = torch.tensor([0.485, 0.456, 0.406], device="cuda").view(-1, 1, 1)
-        self.std = torch.tensor([0.229, 0.224, 0.225], device="cuda").view(-1, 1, 1)
+        self.mean = torch.tensor([0.485, 0.456, 0.406], device=device).view(-1, 1, 1)
+        self.std = torch.tensor([0.229, 0.224, 0.225], device=device).view(-1, 1, 1)
 
     def forward(self, image):
         image = image / torch.tensor(255).float()
@@ -36,10 +36,12 @@ class LatentOptimizer(torch.nn.Module):
     def __init__(self, synthesizer, layer=12):
         super().__init__()
 
-        self.synthesizer = synthesizer.cuda().eval()
+        # self.synthesizer = synthesizer.cuda().eval()
+        self.synthesizer = synthesizer.eval()
         self.post_synthesis_processing = PostSynthesisProcessing()
         self.vgg_processing = VGGProcessing()
-        self.vgg16 = vgg16(pretrained=True).features[:layer].cuda().eval()
+        # self.vgg16 = vgg16(pretrained=True).features[:layer].cuda().eval()
+        self.vgg16 = vgg16(pretrained=True).features[:layer].eval()
 
 
     def forward(self, dlatents):
