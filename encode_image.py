@@ -2,7 +2,7 @@ import argparse
 from tqdm import tqdm
 import numpy as np
 import torch
-from InterFaceGAN.models.stylegan_generator import StyleGANGenerator
+from interfacegan.models.stylegan_generator import StyleGANGenerator
 from models.latent_optimizer import LatentOptimizer
 from models.image_to_latent import ImageToLatent
 from models.losses import LatentLoss
@@ -20,7 +20,7 @@ parser.add_argument("--video", default=False, help="Whether or not to save a vid
 parser.add_argument("--video_path", default="video.avi", help="Where to save the video at.", type=str)
 parser.add_argument("--save_frequency", default=10, help="How often to save the images to video. Smaller = Faster.", type=int)
 parser.add_argument("--iterations", default=1000, help="Number of optimizations steps.", type=int)
-parser.add_argument("--model_type", default="stylegan_ffhq", help="The model to use from InterFaceGAN repo.", type=str)
+parser.add_argument("--model_type", default="stylegan_ffhq", help="The model to use from interfacegan repo.", type=str)
 parser.add_argument("--learning_rate", default=1, help="Learning rate for SGD.", type=int)
 parser.add_argument("--vgg_layer", default=12, help="The VGG network layer number to extract features from.", type=int)
 parser.add_argument("--use_latent_finder", default=False, help="Whether or not to use a latent finder to find the starting latents to optimize from.", type=bool)
