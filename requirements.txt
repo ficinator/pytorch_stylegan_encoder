@@ -1,8 +1,10 @@
-opencv-python
-scikit-learn
-tqdm
-torch
-torchvision
+dlib
+gradio
 jupyter
 kaggle
-gradio
+numpy
+opencv-python
+scikit-learn
+torch
+torchvision
+tqdm
