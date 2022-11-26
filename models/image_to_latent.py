@@ -23,7 +23,7 @@ class ImageToLatent(torch.nn.Module):
         x = self.flatten(x)
         x = self.dense1(x)
         x = self.dense2(x)
-        x = x.view((-1, 18, 512))
+        # x = x.view((-1, 18, 512))
 
         return x
 
